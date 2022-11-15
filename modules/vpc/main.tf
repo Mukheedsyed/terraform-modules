@@ -1,20 +1,20 @@
 # create vpc
 resource "aws_vpc" "vpc" {
-  cidr_block              = 
-  instance_tenancy        = 
+  cidr_block              = var.vpc_cidr
+  instance_tenancy        = "default"
   enable_dns_hostnames    = true
 
   tags      = {
-    Name    = "${}-vpc"
+    Name    = "${var.project_name}-vpc"
   }
 }
 
 # create internet gateway and attach it to vpc
 resource "aws_internet_gateway" "internet_gateway" {
-  vpc_id    = 
+  vpc_id    = aws_vpc.vpc.id
 
   tags      = {
-    Name    = "${}-igw"
+    Name    = "${var.project_name}-igw"
   }
 }
 
@@ -23,8 +23,8 @@ data "aws_availability_zones" "available_zones" {}
 
 # create public subnet az1
 resource "aws_subnet" "public_subnet_az1" {
-  vpc_id                  = 
-  cidr_block              = 
+  vpc_id                  = aws_vpc.vpc.id
+  cidr_block              = var.public_subnet_az1
   availability_zone       = 
   map_public_ip_on_launch = 
 

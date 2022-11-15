@@ -1,3 +1,4 @@
+#outputs for vpc
 output "region" {
   value = var.region
 }

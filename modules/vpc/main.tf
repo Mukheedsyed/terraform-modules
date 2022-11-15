@@ -23,8 +23,8 @@ data "aws_availability_zones" "available_zones" {}
 
 # create public subnet az1
 resource "aws_subnet" "public_subnet_az1" {
-  vpc_id                  = 
-  cidr_block              = 
+  vpc_id                  = aws_vpc.vpc.id
+  cidr_block              = var.public_subnet_az1
   availability_zone       = 
   map_public_ip_on_launch = 
 

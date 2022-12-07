@@ -118,5 +118,3 @@ resource "aws_subnet" "private_data_subnet_az2" {
     Name    = "private database subnet az2"
   }
 }
-
-# end of vpc and public subnets and private subnets
